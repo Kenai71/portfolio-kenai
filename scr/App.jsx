@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 // Mantive apenas os ícones usados. O Instagram já vem do lucide-react (padrão preto/branco via CSS)
 import { Moon, Sun, Menu, X, Instagram } from 'lucide-react'; 
-import { projects } from './dados/projects'; // Verifique se o nome do arquivo é projects.js ou projetos.js
+import { projects } from './assests/dados/projects'; // Verifique se o nome do arquivo é projects.js ou projetos.js
 import './App.css';
 
 const App = () => {
@@ -132,7 +132,7 @@ const App = () => {
               variants={fadeInUp}
             >
               <div className="sobre-imagem">
-                <img src="/sua-foto.png" alt="Foto de Kenai" />
+                <img src="/1.png" alt="Foto de Kenai" />
               </div>
               <div className="sobre-texto">
                 <h2 className="section-title-left">Sobre Mim<span>.</span></h2>
