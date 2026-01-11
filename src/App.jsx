@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 // Mantive apenas os ícones usados. O Instagram já vem do lucide-react (padrão preto/branco via CSS)
 import { Moon, Sun, Menu, X, Instagram } from 'lucide-react'; 
-import { projects } from './assests/dados/projects'; // Verifique se o nome do arquivo é projects.js ou projetos.js
+import { projects } from './dados/project'; // Verifique se o nome do arquivo é projects.js ou projetos.js
 import './App.css';
 
 const App = () => {
