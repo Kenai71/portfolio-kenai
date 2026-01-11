@@ -85,7 +85,9 @@ header {
 .filter-btn {
   background: var(--cor-cartao); color: var(--cor-texto);
   border: 1px solid var(--cor-borda); padding: 0.5rem 1.5rem;
-  border-radius: 20px; cursor: pointer; transition: all 0.3s;
+  border-radius: 50px; /* Mais arredondado */
+  cursor: pointer; transition: all 0.3s;
+  font-weight: 600;
 }
 .filter-btn.active, .filter-btn:hover {
   background: var(--cor-destaque); color: var(--cor-fundo); border-color: var(--cor-destaque);
@@ -93,50 +95,89 @@ header {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* Garante colunas consistentes como na sua imagem (3 colunas em telas maiores) */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
   gap: 1.5rem;
 }
 
 .portfolio-item {
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
-  background-color: var(--cor-cartao); /* Fundo caso a imagem não preencha tudo */
+  border-radius: 24px; /* Borda mais arredondada igual à imagem */
+  background-color: var(--cor-cartao);
   border: 1px solid var(--cor-borda);
-  aspect-ratio: 1 / 1; /* Mantém o formato quadrado */
+  aspect-ratio: 1 / 1; /* Mantém quadrado */
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* FIX DA IMAGEM: Garante que a foto toda apareça */
+.portfolio-item:hover {
+  transform: translateY(-5px); /* Efeito suave ao passar o mouse */
+  box-shadow: 0 10px 30px rgba(0, 245, 200, 0.1);
+}
+
 .image-container {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px; /* Um pequeno respiro */
+    padding: 0; /* Removido padding para a imagem preencher tudo */
 }
 
 .portfolio-item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* ESSENCIAL: Não corta a imagem */
-  transition: transform 0.5s ease;
-  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem preencha todo o quadrado sem bordas */
+  transition: transform 0.6s ease;
 }
 
-.portfolio-item:hover img { transform: scale(1.05); }
+.portfolio-item:hover img { transform: scale(1.1); }
 
-/* Overlay de Texto */
+/* --- OVERLAY ESTILO NOVO (IGUAL À REFERÊNCIA) --- */
 .portfolio-overlay {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 1.5rem; opacity: 0; transition: opacity 0.3s ease;
+  /* Gradiente preto vindo de baixo para cima para destacar o texto */
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.2) 60%, transparent 100%);
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-end; /* Joga o conteúdo para baixo */
+  align-items: flex-start;   /* Joga o conteúdo para a ESQUERDA */
+  text-align: left;          /* Garante alinhamento do texto à esquerda */
+  padding: 2rem;             /* Espaçamento interno maior */
+  opacity: 0; 
+  transition: opacity 0.3s ease;
 }
+
+/* Mantém o texto visível no hover OU se quiser sempre visível, mude opacity para 1 */
 .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-.portfolio-overlay h3 { font-family: var(--fonte-titulo); color: #fff; margin-bottom: 0.2rem; }
-.portfolio-overlay p { color: var(--cor-destaque); font-size: 0.9rem; }
+
+.portfolio-overlay h3 { 
+  font-family: var(--fonte-titulo); 
+  color: #fff; 
+  font-size: 1.8rem; /* Fonte maior e mais grossa */
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.portfolio-overlay p { 
+  color: var(--cor-destaque); 
+  font-size: 0.9rem; 
+  font-weight: 700;
+  text-transform: uppercase; /* Caixa alta para o tipo do projeto */
+  letter-spacing: 1px;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.1s; /* Delayzinho suave */
+}
+
+/* Animação de entrada do texto */
+.portfolio-item:hover .portfolio-overlay h3,
+.portfolio-item:hover .portfolio-overlay p {
+  transform: translateY(0);
+}
 
 /* SOBRE & FOOTER */
 .sobre-content { display: flex; align-items: center; gap: 4rem; }

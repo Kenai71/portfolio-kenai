@@ -132,7 +132,7 @@ const App = () => {
               variants={fadeInUp}
             >
               <div className="sobre-imagem">
-                <img src="/1.png" alt="Foto de Kenai" />
+                <img src="/img/1.png" alt="Foto de Kenai" />
               </div>
               <div className="sobre-texto">
                 <h2 className="section-title-left">Sobre Mim<span>.</span></h2>
