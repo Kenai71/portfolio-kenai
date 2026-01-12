@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Moon, Sun, Menu, X, Instagram, ArrowRight } from 'lucide-react'; 
+import { Moon, Sun, Menu, X, Instagram, ArrowUpRight } from 'lucide-react'; 
 import { projects } from './dados/project';
 import HeroPremium from './components/HeroPremium';
 import './App.css';
@@ -10,12 +10,12 @@ const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState('all');
 
+  // Parallax suave para a imagem do "Sobre"
   const aboutRef = useRef(null);
   const { scrollYProgress: aboutScroll } = useScroll({
     target: aboutRef,
     offset: ["start end", "end start"]
   });
-  
   const yAboutImg = useTransform(aboutScroll, [0, 1], ["10%", "-10%"]);
 
   useEffect(() => {
@@ -30,12 +30,8 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {/* BACKGROUND ANIMADO ORIGINAL */}
       <div className="aurora-bg"></div>
       
-      {/* TEXTURA DE RUÍDO (Opcional, dá um toque premium) */}
-      <div className="noise-overlay"></div>
-
       {/* HEADER */}
       <header>
         <div className="container nav-container">
@@ -59,7 +55,7 @@ const App = () => {
       </header>
 
       <main>
-        {/* HERO SEM IMAGEM DE FUNDO, APENAS O AURORA */}
+        {/* HERO SECTION */}
         <HeroPremium />
 
         {/* PORTFOLIO SECTION */}
@@ -102,10 +98,16 @@ const App = () => {
                     <div className="image-container">
                         <img src={item.image} alt={item.title} />
                     </div>
-                    {/* Overlay simplificado para focar na imagem */}
+                    
+                    {/* NOVO OVERLAY PREMIUM */}
                     <div className="portfolio-overlay">
-                      <h3>{item.title}</h3>
-                      <p>{item.type}</p>
+                      <div className="overlay-text">
+                        <h3>{item.title}</h3>
+                        <p>{item.type}</p>
+                      </div>
+                      <div className="overlay-icon">
+                        <ArrowUpRight size={28} />
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -129,7 +131,10 @@ const App = () => {
                 <h2 className="section-title-left">Sobre Mim<span>.</span></h2>
                 <p className="lead-text">Olá! Sou <strong>Kenai</strong>, designer visual apaixonado por criar identidades que marcam.</p>
                 <p>Com 18 anos, combino estética minimalista com estratégia robusta. Meu objetivo é transformar ideias em experiências visuais memoráveis.</p>
-                <a href="https://wa.me/5571997391105" target="_blank" className="btn btn-outline">Vamos conversar</a>
+                
+                <a href="https://wa.me/5571997391105" target="_blank" className="btn btn-outline">
+                  Vamos conversar
+                </a>
               </div>
             </div>
           </div>
@@ -138,10 +143,18 @@ const App = () => {
         {/* CONTATO SECTION */}
         <section id="contato">
           <div className="container">
-             <div className="contato-content">
+             <motion.div 
+                className="contato-content"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+             >
                 <h2 className="section-title huge-text">Vamos criar algo<br/><span>único?</span></h2>
-                <a href="mailto:kenaidesign22@gmail.com" className="btn btn-large">Enviar e-mail</a>
-            </div>
+                <a href="mailto:kenaidesign22@gmail.com" className="btn btn-large">
+                  Enviar e-mail
+                </a>
+            </motion.div>
           </div>
         </section>
       </main>
