@@ -1,211 +1,228 @@
-/* --- VARIÁVEIS E GLOBAIS --- */
+/* --- GLOBAIS --- */
 :root {
-  --cor-fundo: #0a0a0a;
-  --cor-texto: #e0e0e0;
+  --cor-fundo: #050505;
+  --cor-texto: #f0f0f0;
   --cor-destaque: #00f5c8; 
-  --cor-cartao: #1a1a1a;
-  --cor-borda: #2c2c2c;
+  --cor-cartao: #111;
+  --cor-borda: #222;
   --fonte-titulo: 'Poppins', sans-serif;
   --fonte-corpo: 'Lato', sans-serif;
 }
 
 body.light-mode {
-  --cor-fundo: #f0f2f5;
-  --cor-texto: #1c1e21;
+  --cor-fundo: #eef0f4;
+  --cor-texto: #1a1a1a;
   --cor-destaque: #008a73;
-  --cor-cartao: #ffffff;
-  --cor-borda: #dce1e6;
 }
 
-/* Reset básico */
-* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
   font-family: var(--fonte-corpo);
-  line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
+  margin: 0;
 }
 
-/* Background Aurora Animado */
+/* --- BACKGROUND AURORA FLUIDO (MELHORADO) --- */
 .aurora-bg {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
   z-index: -1;
-  background: radial-gradient(circle at 15% 25%, rgba(0, 245, 200, 0.05), transparent 30%),
-              radial-gradient(circle at 85% 75%, rgba(0, 245, 200, 0.05), transparent 30%);
-  filter: blur(40px);
+  background: var(--cor-fundo);
+  overflow: hidden; /* Importante para não criar scrollbars com os borroes */
 }
 
-/* --- LAYOUT --- */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-section { padding: 6rem 0; }
+/* Luz 1: Ciano/Verde Água */
+.aurora-bg::before {
+  content: '';
+  position: absolute;
+  top: -20%; left: -20%;
+  width: 70vw; height: 70vw;
+  background: radial-gradient(circle, rgba(0, 245, 200, 0.12), transparent 70%);
+  filter: blur(80px);
+  border-radius: 50%;
+  animation: float1 18s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.7;
+}
 
-/* HEADER */
+/* Luz 2: Azul Profundo (para dar contraste e profundidade) */
+.aurora-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -20%; right: -20%;
+  width: 60vw; height: 60vw;
+  background: radial-gradient(circle, rgba(0, 100, 255, 0.08), transparent 70%);
+  filter: blur(80px);
+  border-radius: 50%;
+  animation: float2 22s infinite alternate-reverse cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+}
+
+/* Animações de flutuação suave */
+@keyframes float1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(15%, 10%) scale(1.1); }
+  100% { transform: translate(-5%, 20%) scale(0.9); }
+}
+
+@keyframes float2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-15%, -10%) scale(1.1); }
+  100% { transform: translate(10%, -15%) scale(0.95); }
+}
+
+/* Overlay de ruído para textura (Opcional, mantém o estilo filme) */
+.noise-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 999; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --- HEADER --- */
 header {
-  position: sticky; top: 0; z-index: 1000;
+  position: fixed; top: 0; width: 100%; z-index: 1000;
   padding: 1.5rem 0;
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--cor-borda);
+  background: rgba(5, 5, 5, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: var(--fonte-titulo); font-weight: 800; font-size: 1.8rem; color: var(--cor-texto); text-decoration: none; }
+.logo { font-family: var(--fonte-titulo); font-weight: 800; font-size: 1.5rem; color: var(--cor-texto); text-decoration: none; }
 .logo span { color: var(--cor-destaque); }
-
-.nav-links { display: flex; gap: 2.5rem; }
-.nav-links a { color: var(--cor-texto); text-decoration: none; font-weight: 500; transition: color 0.3s; }
-.nav-links a:hover { color: var(--cor-destaque); }
-
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { color: var(--cor-texto); text-decoration: none; font-weight: 600; opacity: 0.8; transition: all 0.3s; }
+.nav-links a:hover { color: var(--cor-destaque); opacity: 1; }
 .nav-right { display: flex; gap: 1rem; align-items: center; }
-.icon-btn { background: none; border: none; color: var(--cor-texto); cursor: pointer; transition: color 0.3s; }
-.icon-btn:hover { color: var(--cor-destaque); }
-.hamburger { display: none; }
+.icon-btn { background: none; border: none; color: var(--cor-texto); cursor: pointer; }
 
-/* HERO */
-.hero { min-height: 80vh; display: flex; align-items: center; text-align: center; justify-content: center; }
-.hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-family: var(--fonte-titulo); font-weight: 800; margin-bottom: 1rem; line-height: 1.1; }
-.subtitle { font-size: 1.25rem; opacity: 0.8; margin-bottom: 2rem; max-width: 700px; margin-inline: auto; }
-
-.btn {
-  display: inline-block; padding: 0.8rem 2.5rem;
-  background-color: var(--cor-destaque); color: var(--cor-fundo);
-  text-decoration: none; font-weight: bold; font-family: var(--fonte-titulo);
-  border-radius: 50px; border: 2px solid var(--cor-destaque);
-  transition: all 0.3s ease;
+/* --- HERO TEXTOS --- */
+.premium-title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 0.9;
+  margin: 0;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -2px;
 }
-.btn:hover { background: transparent; color: var(--cor-destaque); }
+.premium-subtitle {
+  font-size: 1.2rem;
+  color: var(--cor-destaque);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+}
+.scroll-indicator {
+  margin-top: 4rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 2px;
+}
 
-/* --- PORTFOLIO (GRID & IMAGENS) --- */
-.section-title { text-align: center; font-size: 3rem; margin-bottom: 3rem; font-family: var(--fonte-titulo); }
-.section-title span { color: var(--cor-destaque); }
+/* --- LAYOUT GERAL --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 6rem 0; }
+.section-title { font-size: 3rem; margin-bottom: 3rem; text-align: center; font-family: var(--fonte-titulo); }
+.section-title .dot { color: var(--cor-destaque); }
 
+/* --- PORTFOLIO --- */
 .portfolio-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
 .filter-btn {
-  background: var(--cor-cartao); color: var(--cor-texto);
-  border: 1px solid var(--cor-borda); padding: 0.5rem 1.5rem;
-  border-radius: 20px; cursor: pointer; transition: all 0.3s;
-  font-weight: 600;
+  background: transparent; color: var(--cor-texto); border: 1px solid var(--cor-borda);
+  padding: 0.5rem 1.5rem; border-radius: 50px; cursor: pointer; transition: 0.3s;
 }
-.filter-btn.active, .filter-btn:hover {
-  background: var(--cor-destaque); color: var(--cor-fundo); border-color: var(--cor-destaque);
-}
+.filter-btn.active, .filter-btn:hover { background: var(--cor-texto); color: var(--cor-fundo); }
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
 .portfolio-item {
   position: relative;
-  overflow: hidden;
-  border-radius: 24px;
   background-color: var(--cor-cartao);
-  border: 1px solid var(--cor-borda);
-  aspect-ratio: 1 / 1; /* Mantém o formato quadrado do container */
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Garante que o fundo do cartão seja a cor padrão caso a imagem não preencha tudo */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0s;
+  z-index: 1;
+  border: 1px solid var(--cor-borda);
 }
 
 .portfolio-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 245, 200, 0.15); /* Sombra ligeiramente mais forte */
+  transform: scale(1.1);
+  z-index: 100;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); /* Sombra mais dramática */
 }
 
 .image-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-}
-
-/* --- MUDANÇA 1: IMAGEM INTEIRA VISÍVEL --- */
-.portfolio-item img {
   width: 100%;
   height: 100%;
-  /* MUDADO DE 'cover' PARA 'contain' */
-  /* Isso garante que a imagem inteira seja mostrada sem cortes, 
-     adaptando-se dentro do quadrado */
-  object-fit: contain; 
-  transition: transform 0.6s ease;
-  border-radius: 24px; /* Garante que os cantos da imagem também arredondem se ela preencher tudo */
+  background-color: #000;
+  display: flex; align-items: center; justify-content: center;
 }
 
-.portfolio-item:hover img { transform: scale(1.05); /* Zoom um pouco mais sutil */ }
+.portfolio-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: object-fit 0.3s ease, transform 0.5s ease;
+}
 
-/* --- MUDANÇA 2: OVERLAY DE TEXTO MAIS BONITO --- */
+.portfolio-item:hover img { object-fit: contain; }
+
 .portfolio-overlay {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  /* Gradiente mais suave e sofisticado */
-  background: linear-gradient(to top, 
-    rgba(0,0,0,0.95) 0%, 
-    rgba(0,0,0,0.7) 30%, 
-    rgba(0,0,0,0.3) 60%, 
-    transparent 100%);
-  display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
-  text-align: left; 
-  padding: 2.5rem; /* Mais espaçamento interno */
-  opacity: 0; transition: all 0.4s ease; /* Transição ligeiramente mais lenta e suave */
+  position: absolute; bottom: 0; left: 0; width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+  opacity: 0; transition: 0.3s;
+  transform: translateY(10px);
+}
+.portfolio-item:hover .portfolio-overlay { opacity: 1; transform: translateY(0); }
+.portfolio-overlay h3 { color: #fff; font-size: 1.2rem; font-family: var(--fonte-titulo); margin-bottom: 0.2rem; }
+.portfolio-overlay p { color: var(--cor-destaque); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+
+/* --- SOBRE --- */
+.sobre-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.sobre-imagem-wrapper { height: 500px; border-radius: 20px; overflow: hidden; position: relative; }
+.sobre-foto { width: 100%; height: 100%; object-fit: cover; }
+.section-title-left { font-size: 2.5rem; margin-bottom: 1.5rem; font-family: var(--fonte-titulo); }
+.huge-text { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 2rem; line-height: 1; }
+.huge-text span { color: var(--cor-destaque); }
+
+/* --- BOTÕES --- */
+.btn { 
+  display: inline-block; padding: 1rem 2.5rem; 
+  background: var(--cor-destaque); color: #000; 
+  border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 1rem; 
+  transition: transform 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 2px solid var(--cor-destaque); color: var(--cor-destaque); }
+.btn-large { font-size: 1.2rem; padding: 1.2rem 3rem; }
+
+/* --- CONTATO (CENTRALIZAÇÃO DO BOTÃO) --- */
+.contato-content {
+  display: flex;
+  flex-direction: column; /* Empilha os itens (título e botão) */
+  align-items: center;    /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente se houver altura fixa */
+  text-align: center;     /* Garante que o texto dentro também esteja centralizado */
+  gap: 1rem;             /* Espaço entre o título e o botão */
 }
 
-.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+/* --- FOOTER --- */
+footer { text-align: center; padding: 3rem 0; border-top: 1px solid var(--cor-borda); margin-top: 4rem; opacity: 0.6; }
+.social-links { margin-bottom: 1rem; }
+.social-links a { color: #fff; }
 
-.portfolio-overlay h3 { 
-  font-family: var(--fonte-titulo); color: #fff; 
-  font-size: 1.7rem; /* Tamanho ajustado */
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 0.75rem; /* Mais espaço entre título e categoria */
-  transform: translateY(20px); transition: transform 0.4s ease;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Sombra sutil para melhorar leitura */
-}
-
-.portfolio-overlay p { 
-  color: var(--cor-destaque); font-size: 0.95rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 1.5px; /* Mais espaçamento entre letras */
-  transform: translateY(20px); transition: transform 0.4s ease 0.1s;
-}
-
-.portfolio-item:hover .portfolio-overlay h3,
-.portfolio-item:hover .portfolio-overlay p {
-  transform: translateY(0);
-}
-
-/* SOBRE & FOOTER */
-.sobre-content { display: flex; align-items: center; gap: 4rem; }
-.sobre-imagem img { width: 350px; height: 350px; object-fit: cover; border-radius: 50%; border: 4px solid var(--cor-destaque); }
-.section-title-left { font-size: 2.5rem; font-family: var(--fonte-titulo); margin-bottom: 1.5rem; }
-.section-title-left span { color: var(--cor-destaque); }
-
-.contato-content { text-align: center; }
-footer { text-align: center; padding: 3rem 0; border-top: 1px solid var(--cor-borda); margin-top: 4rem; }
-.social-links { margin-bottom: 1rem; display: flex; justify-content: center; gap: 1.5rem; }
-.social-links a { color: var(--cor-texto); transition: color 0.3s; }
-.social-links a:hover { color: var(--cor-destaque); }
-
-/* MOBILE */
 @media (max-width: 768px) {
-  .hamburger { display: block; z-index: 1001; }
-  .nav-links {
-    position: fixed; top: 0; right: -100%; height: 100vh; width: 70%;
-    background: var(--cor-cartao); flex-direction: column;
-    justify-content: center; align-items: center; transition: right 0.4s ease;
-    z-index: 1000; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-  }
+  .sobre-content { grid-template-columns: 1fr; }
+  .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: #050505; flex-direction: column; justify-content: center; transition: 0.3s; z-index: 999; }
   .nav-links.active { right: 0; }
-  .sobre-content { flex-direction: column; text-align: center; }
-  .section-title-left { text-align: center; }
-  .sobre-imagem img { width: 250px; height: 250px; }
-  
-  /* Ajuste para mobile: texto do card um pouco menor */
-  .portfolio-overlay h3 { font-size: 1.5rem; }
-  .portfolio-overlay { padding: 1.5rem; }
+  .hamburger { display: block; z-index: 1001; }
+  .premium-title { font-size: 3.5rem; }
+  /* No mobile, as luzes podem ser menores para performance */
+  .aurora-bg::before, .aurora-bg::after { width: 100vw; height: 100vw; }
 }
