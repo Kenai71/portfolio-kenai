@@ -1,4 +1,4 @@
-// dados/projetos.js
+// dados/project.js (ou projects.js, dependendo de como você salvou)
 export const projects = [
   {
     id: 1,
@@ -9,10 +9,11 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Campanha X",
+    title: "Capa portfólio",
     category: "posts",
     type: "Social Media",
-    image: "https://placehold.co/400x600/1a1a1a/e0e0e0?text=Post+Vertical"
+    // AQUI: Usando a imagem que você pediu
+    image: "/img/portfolio1.png"
   },
   {
     id: 3,
@@ -28,5 +29,5 @@ export const projects = [
     type: "Branding",
     image: "https://placehold.co/600x600/1a1a1a/e0e0e0?text=Branding"
   },
-  // Adicione quantos quiser aqui
+  // Adicione mais projetos aqui...
 ];

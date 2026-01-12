@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// Mantive apenas os ícones usados. O Instagram já vem do lucide-react (padrão preto/branco via CSS)
 import { Moon, Sun, Menu, X, Instagram } from 'lucide-react'; 
-import { projects } from './dados/project'; // Verifique se o nome do arquivo é projects.js ou projetos.js
+import { projects } from './dados/project';
 import './App.css';
 
 const App = () => {
@@ -132,14 +131,14 @@ const App = () => {
               variants={fadeInUp}
             >
               <div className="sobre-imagem">
+                {/* Certifique-se que sua foto 1.png está em public/img/ */}
                 <img src="/img/1.png" alt="Foto de Kenai" />
               </div>
               <div className="sobre-texto">
                 <h2 className="section-title-left">Sobre Mim<span>.</span></h2>
-                <p>Olá! Sou <strong>Kenai</strong>, um designer de <strong>18 anos</strong> apaixonado por criar soluções visuais...</p>
-                <p>Acredito que um bom design é a combinação de estratégia, criatividade e atenção aos detalhes.</p>
+                <p>Olá! Sou <strong>Kenai</strong>, um designer de <strong>18 anos</strong> apaixonado por criar soluções visuais que conectam marcas e pessoas. Meu foco é desenvolver projetos que não são apenas esteticamente agradáveis, mas que também contam uma história e geram resultados.</p>
+                <p>Acredito que um bom design é a combinação de estratégia, criatividade e atenção aos detalhes. Estou sempre explorando novas tendências e ferramentas para entregar o melhor trabalho possível.</p>
                 
-                {/* BOTÃO WHATSAPP CORRIGIDO */}
                 <a 
                   href="https://wa.me/5571997391105?text=Quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os" 
                   target="_blank" 
@@ -172,11 +171,10 @@ const App = () => {
         </section>
       </main>
 
-      {/* FOOTER ATUALIZADO */}
+      {/* FOOTER */}
       <footer>
         <div className="container footer-content">
           <div className="social-links">
-            {/* Ícone do Lucide React herda a cor do texto (preto/branco dependendo do tema) */}
             <a 
               href="https://www.instagram.com/kenai.design/" 
               target="_blank" 
