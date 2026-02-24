@@ -4,7 +4,7 @@ export const projects = [
     title: "Kenai Nascimento",
     category: "marcas",
     type: "Identidade Visual",
-    image: "img/1.png" 
+    image: "img/2.png" 
   },
   {
     id: 2,
