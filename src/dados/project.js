@@ -1,10 +1,10 @@
 export const projects = [
   {
     id: 1,
-    title: "Nome da Marca",
+    title: "Kenai Nascimento",
     category: "marcas",
     type: "Identidade Visual",
-    image: "https://placehold.co/600x400/00f5c8/0a0a0a?text=Marca+1" 
+    image: "img/1.png" 
   },
   {
     id: 2,
