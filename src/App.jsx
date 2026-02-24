@@ -94,6 +94,7 @@ const App = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.4 }}
+                    onClick={() => item.link && window.open(item.link, '_blank')}
                   >
                     <div className="image-container">
                         <img src={item.image} alt={item.title} />
@@ -130,7 +131,7 @@ const App = () => {
               <div className="sobre-texto">
                 <h2 className="section-title-left">Sobre Mim<span>.</span></h2>
                 <p className="lead-text">Olá! Sou <strong>Kenai</strong>, designer visual apaixonado por criar identidades que marcam.</p>
-                <p>Com 19 anos, combino estética minimalista com estratégia robusta. Meu objetivo é transformar ideias em experiências visuais memoráveis.</p>
+                <p>Com 18 anos, combino estética minimalista com estratégia robusta. Meu objetivo é transformar ideias em experiências visuais memoráveis.</p>
                 
                 <a href="https://wa.me/5571997391105" target="_blank" className="btn btn-outline">
                   Vamos conversar
@@ -162,9 +163,9 @@ const App = () => {
       <footer>
         <div className="container footer-content">
           <div className="social-links">
-            <a href="https://www.instagram.com/kenai.design/" target="_blank"><Instagram /></a>
+            <a href="https://www.instagram.com/aalmeida.gym/" target="_blank"><Instagram /></a>
           </div>
-          <p>&copy; 2025 Kenai.</p>
+          <p>&copy; 2026 Kenai.</p>
         </div>
       </footer>
     </div>

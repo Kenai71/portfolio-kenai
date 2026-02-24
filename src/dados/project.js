@@ -1,4 +1,3 @@
-// dados/project.js (ou projects.js, dependendo de como você salvou)
 export const projects = [
   {
     id: 1,
@@ -12,7 +11,6 @@ export const projects = [
     title: "Capa portfólio",
     category: "posts",
     type: "Social Media",
-    // AQUI: Usando a imagem que você pediu
     image: "/img/portfolio1.png"
   },
   {
@@ -29,5 +27,12 @@ export const projects = [
     type: "Branding",
     image: "https://placehold.co/600x600/1a1a1a/e0e0e0?text=Branding"
   },
-  // Adicione mais projetos aqui...
+  {
+    id: 5,
+    title: "RPG Kenai",
+    category: "web",
+    type: "Web site rpg com IA",
+    link: "https://rpg-kenai.vercel.app/login",
+    image: "https://placehold.co/800x600/00f5c8/0a0a0a?text=RPG+Kenai"
+  }
 ];
