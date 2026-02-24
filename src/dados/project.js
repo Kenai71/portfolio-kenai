@@ -29,10 +29,10 @@ export const projects = [
   },
   {
     id: 5,
-    title: "RPG Kenai",
+    title: "RPG",
     category: "web",
     type: "Web site rpg com IA",
     link: "https://rpg-kenai.vercel.app/login",
-    image: "https://placehold.co/800x600/00f5c8/0a0a0a?text=RPG+Kenai"
+    image: "/img/rpg.jpg"
   }
 ];
