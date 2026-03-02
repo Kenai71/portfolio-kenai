@@ -131,7 +131,7 @@ const App = () => {
               <div className="sobre-texto">
                 <h2 className="section-title-left">Sobre Mim<span>.</span></h2>
                 <p className="lead-text">Olá! Sou <strong>Kenai</strong>, designer visual apaixonado por criar identidades que marcam.</p>
-                <p>Com 18 anos, combino estética minimalista com estratégia robusta. Meu objetivo é transformar ideias em experiências visuais memoráveis.</p>
+                <p>Com 19 anos, combino estética minimalista com estratégia robusta. Meu objetivo é transformar ideias em experiências visuais memoráveis.</p>
                 
                 <a href="https://wa.me/5571997391105" target="_blank" className="btn btn-outline">
                   Vamos conversar
@@ -163,7 +163,7 @@ const App = () => {
       <footer>
         <div className="container footer-content">
           <div className="social-links">
-            <a href="https://www.instagram.com/aalmeida.gym/" target="_blank"><Instagram /></a>
+            <a href="https://www.instagram.com/kenai.design/" target="_blank"><Instagram /></a>
           </div>
           <p>&copy; 2026 Kenai.</p>
         </div>
