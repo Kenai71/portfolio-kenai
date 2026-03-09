@@ -72,7 +72,7 @@ const App = () => {
             </motion.div>
             
             <div className="portfolio-filters">
-              {['all', 'marcas', 'posts', 'web'].map((cat) => (
+              {['all', 'marcas', 'posts', 'web', 'sistemas'].map((cat) => (
                 <button 
                   key={cat}
                   className={`filter-btn ${filter === cat ? 'active' : ''}`} 
@@ -94,7 +94,18 @@ const App = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.4 }}
-                    onClick={() => item.link && window.open(item.link, '_blank')}
+                    onClick={() => {
+                      if (item.link) {
+                        window.open(item.link, '_blank');
+                      } else if (item.download) {
+                        const a = document.createElement('a');
+                        a.href = item.download;
+                        a.download = item.download.split('/').pop();
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                      }
+                    }}
                   >
                     <div className="image-container">
                         <img src={item.image} alt={item.title} />
@@ -106,9 +117,12 @@ const App = () => {
                         <h3>{item.title}</h3>
                         <p>{item.type}</p>
                       </div>
-                      <div className="overlay-icon">
-                        <ArrowUpRight size={28} />
-                      </div>
+                      {/* A condição abaixo garante que a seta só aparece se tiver link ou download */}
+                      {(item.link || item.download) && (
+                        <div className="overlay-icon">
+                          <ArrowUpRight size={28} />
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 ))}
