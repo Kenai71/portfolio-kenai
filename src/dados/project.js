@@ -39,7 +39,7 @@ export const projects = [
   },
   {
     id: 6,
-    title: "Kenzo Assistente Virtual",
+    title: "Kenzo Assistente ",
     category: "sistemas",
     type: "Software",
     download: kenzoExe,
