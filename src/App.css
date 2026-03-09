@@ -111,7 +111,6 @@ section { padding: 4rem 0; position: relative; }
 
 .portfolio-grid {
   display: grid;
-  /* Responsivo: cards não ficam gigantes */
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
 }
@@ -121,7 +120,7 @@ section { padding: 4rem 0; position: relative; }
   background-color: var(--cor-cartao); 
   border-radius: 16px; 
   overflow: hidden; 
-  aspect-ratio: 1 / 1; /* Formato Quadrado */
+  aspect-ratio: 1 / 1; 
   cursor: pointer;
   border: 1px solid var(--cor-borda); 
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -133,7 +132,7 @@ section { padding: 4rem 0; position: relative; }
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), object-fit 0s;
 }
 
-/* --- OVERLAY GLASSMORPHISM (NOVO) --- */
+/* --- OVERLAY GLASSMORPHISM --- */
 .portfolio-overlay {
   position: absolute; inset: 0;
   background: rgba(0, 0, 0, 0.2);
@@ -156,25 +155,26 @@ section { padding: 4rem 0; position: relative; }
   transform: scale(0) rotate(45deg);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  flex-shrink: 0; /* IMPEDE A SETA DE ESTICAR */
 }
 
 /* EFEITOS DE HOVER (DESKTOP) */
 @media (hover: hover) {
   .portfolio-item:hover {
     transform: translateY(-5px);
-    border-color: var(--cor-destaque); /* Borda brilha */
-    box-shadow: 0 15px 40px rgba(0, 245, 200, 0.15); /* Glow externo */
+    border-color: var(--cor-destaque); 
+    box-shadow: 0 15px 40px rgba(0, 245, 200, 0.15); 
     z-index: 10;
   }
   
   .portfolio-item:hover img {
-    object-fit: contain; /* Mostra imagem inteira */
+    object-fit: contain; 
     transform: scale(1.05);
   }
 
   .portfolio-item:hover .portfolio-overlay {
     opacity: 1;
-    backdrop-filter: blur(8px); /* Efeito de vidro */
+    backdrop-filter: blur(8px); 
     background: rgba(0,0,0,0.6);
   }
 
@@ -186,7 +186,7 @@ section { padding: 4rem 0; position: relative; }
 .sobre-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 
 .sobre-imagem-wrapper { 
-  width: 100%; max-width: 320px; /* Controla o tamanho da imagem */
+  width: 100%; max-width: 320px;
   aspect-ratio: 1/1; 
   border-radius: 20px; overflow: hidden; margin: 0 auto;
 }
@@ -201,7 +201,6 @@ section { padding: 4rem 0; position: relative; }
 .btn-outline { background: transparent; border: 2px solid var(--cor-destaque); color: var(--cor-destaque); }
 body.light-mode .btn { color: #fff; }
 
-/* Botão mais baixo */
 .sobre-texto .btn { margin-top: 3.5rem; } 
 
 /* --- CONTATO --- */
@@ -228,7 +227,6 @@ footer { text-align: center; padding: 3rem 0; border-top: 1px solid var(--cor-bo
   .sobre-content { grid-template-columns: 1fr; text-align: center; }
   .sobre-imagem-wrapper { max-width: 250px; }
   
-  /* Mobile: Overlay simples e legível */
   .portfolio-overlay { 
     opacity: 1; 
     background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
@@ -236,5 +234,5 @@ footer { text-align: center; padding: 3rem 0; border-top: 1px solid var(--cor-bo
     backdrop-filter: none;
   }
   .overlay-text { transform: translateY(0); }
-  .overlay-icon { display: none; } /* Ícone oculto no mobile */
+  .overlay-icon { display: none; } 
 }

@@ -1,3 +1,5 @@
+import kenzoExe from '../sistem/kenzo.exe';
+
 export const projects = [
   {
     id: 1,
@@ -40,7 +42,7 @@ export const projects = [
     title: "Kenzo Assistente Virtual",
     category: "sistemas",
     type: "Software",
-    download: "/sistem/kenzo.exe",
-    image: "/img/kenzo.jpg" // Você pode trocar pela imagem do seu projeto depois
+    download: kenzoExe,
+    image: "/img/kenzo.png"
   }
 ];
