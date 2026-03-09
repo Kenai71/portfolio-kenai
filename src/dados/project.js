@@ -41,6 +41,6 @@ export const projects = [
     category: "sistemas",
     type: "Software",
     download: "/sistem/kenzo.exe",
-    image: "img/kenzo.jpg" // Você pode trocar pela imagem do seu projeto depois
+    image: "/img/kenzo.jpg" // Você pode trocar pela imagem do seu projeto depois
   }
 ];
