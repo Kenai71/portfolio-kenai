@@ -19,7 +19,7 @@ export const projects = [
     category: "web",
     type: "UI/UX Design",
     link: "https://barbearia-eta-umber.vercel.app/",
-    image: "/img/site-babeiro.png"
+    image: "/img/site-barbeiro.png"
   },
   {
     id: 4,
