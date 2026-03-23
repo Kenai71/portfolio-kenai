@@ -19,7 +19,7 @@ export const projects = [
     category: "web",
     type: "UI/UX Design",
     link: "https://barbearia-eta-umber.vercel.app/",
-    image: "/img/sitebarbearia.png"
+    image: "/img/site-babeiro.png"
   },
   {
     id: 4,
@@ -41,6 +41,7 @@ export const projects = [
   title: "Kenzo Assistente ",
   category: "sistemas",
   type: "Software",
+  image: "/img/kenzo.png",
   download: "https://drive.google.com/drive/folders/1zT4fNgH80KSkhd4J-v3gD_3tvE2ISpm1?usp=sharing",
   }
 ];
