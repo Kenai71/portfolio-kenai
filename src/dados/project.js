@@ -39,11 +39,10 @@ export const projects = [
     image: "/img/rpg.jpg"
   },
   {
-    id: 6,
-    title: "Kenzo Assistente ",
-    category: "sistemas",
-    type: "Software",
-    download: kenzoExe,
-    image: "/img/kenzo.png"
+   id: 6,
+  title: "Kenzo Assistente ",
+  category: "sistemas",
+  type: "Software",
+  download: "https://drive.google.com/drive/folders/1zT4fNgH80KSkhd4J-v3gD_3tvE2ISpm1?usp=sharing",
   }
 ];
