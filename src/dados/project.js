@@ -17,10 +17,11 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Website Institucional",
+    title: "Site Barbearia",
     category: "web",
     type: "UI/UX Design",
-    image: "https://placehold.co/800x600/00f5c8/0a0a0a?text=Web+Design"
+    link: "https://barbearia-eta-umber.vercel.app/",
+    image: "/img/sitebarbearia.png"
   },
   {
     id: 4,
