@@ -1,5 +1,3 @@
-import kenzoExe from '../sistem/kenzo.exe';
-
 export const projects = [
   {
     id: 1,
