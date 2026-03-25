@@ -26,7 +26,8 @@ export const projects = [
     title: "Modelo de Salão",
     category: "Web",
     type: "Modelo Base",
-    image: "https://placehold.co/600x600/1a1a1a/e0e0e0?text=Branding"
+    link: "https://modelo-salao.vercel.app/",
+    image: "/img/modelo-salao.jpeg"
   },
   {
     id: 5,
