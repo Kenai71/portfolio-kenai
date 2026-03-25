@@ -23,9 +23,9 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Outra Marca",
-    category: "marcas",
-    type: "Branding",
+    title: "Modelo de Salão",
+    category: "Web",
+    type: "Modelo Base",
     image: "https://placehold.co/600x600/1a1a1a/e0e0e0?text=Branding"
   },
   {
