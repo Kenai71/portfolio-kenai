@@ -2,8 +2,9 @@ export const projects = [
   {
     id: 1,
     title: "Kenai Nascimento",
-    category: "marcas",
-    type: "Identidade Visual",
+    category: "web",
+    type: "Portfólio de Designer",
+    link: "https://kenai-design.vercel.app/",
     image: "img/2.png" 
   },
   {
